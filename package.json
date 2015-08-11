@@ -1,0 +1,44 @@
+{
+  "name": "template-error",
+  "description": "Make template errors easy to understand and fix.",
+  "version": "0.1.1",
+  "homepage": "https://github.com/jonschlinkert/template-error",
+  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "repository": "jonschlinkert/template-error",
+  "bugs": {
+    "url": "https://github.com/jonschlinkert/template-error/issues"
+  },
+  "license": "MIT",
+  "files": [
+    "index.js"
+  ],
+  "main": "index.js",
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "dependencies": {
+    "kind-of": "^2.0.0",
+    "lazy-cache": "^0.1.0",
+    "lodash.template": "^3.6.2",
+    "rethrow": "^0.2.1"
+  },
+  "devDependencies": {
+    "mocha": "*",
+    "should": "*"
+  },
+  "keywords": [
+    "error",
+    "rethrow",
+    "template"
+  ],
+  "verb": {
+    "related": {
+      "list": [
+        "rethrow"
+      ]
+    }
+  }
+}
