@@ -2,9 +2,9 @@
 
 var fs = require('fs');
 var lazy = require('lazy-cache')(require);
-lazy.template = lazy('lodash.template');
-lazy.typeOf = lazy('kind-of');
-lazy.rethrow = lazy('rethrow')();
+lazy('kind-of', 'typeOf');
+lazy('rethrow');
+lazy('engine');
 
 function error(str, options) {
   options = options || {};
@@ -15,12 +15,11 @@ function error(str, options) {
   var regex = toRegexp(re);
 
   str.replace(regex, function(match, prop, i) {
-    var rethrow = lazy.rethrow();
-    var render = lazy.template();
-
     try {
-      render(str)(data);
+      var engine = lazy.engine();
+      engine.render(str, data);
     } catch (err) {
+      var rethrow = lazy.rethrow({});
       var prop = matchProp(err.message);
       var match = findProp(prop, str, regex);
       var before = str.slice(0, match.index);
@@ -47,21 +46,19 @@ function findProp(prop, str, re) {
 }
 
 function toRegexp(val) {
-  var typeOf = lazy.typeOf();
-  if (typeOf(val) === 'regexp') {
+  if (lazy.typeOf(val) === 'regexp') {
     return val;
   }
-  if (typeOf(val) === 'object') {
+  if (lazy.typeOf(val) === 'object') {
     return val.interpolate;
   }
 }
 
 function toSettings(val) {
-  var typeOf = lazy.typeOf();
-  if (typeOf(val) === 'regexp') {
+  if (lazy.typeOf(val) === 'regexp') {
     return { interpolate: val };
   }
-  if (typeOf(val) === 'object') {
+  if (lazy.typeOf(val) === 'object') {
     return val;
   }
   return null;
