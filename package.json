@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "engine": "^0.1.5",
-    "kind-of": "^2.0.1",
+    "kind-of": "^6.0.3",
     "lazy-cache": "^0.2.3",
     "rethrow": "^0.2.3"
   },
